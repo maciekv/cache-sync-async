@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
         concatMap((data: any) => this.miniCardsCacheSubject.pipe(
           take(1),
           concatMap(cache => {
-            console.log('-- cache', cache)
+            console.log('-- cache', {...cache})
             console.log('-- programs', data)
             const programIdExist = cache.find(value => value.programId === data.programId);
 
@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
                   programId: data.programId,
                   miniCard: res
                 });
-                console.log('-- cache', cache)
+                console.log('-- cache', {...cache})
                 this.miniCardsCacheSubject.next(this.miniCardsLocalCache);
                 console.log(`-- cache length ${this.miniCardsLocalCache.length}`);
               })
